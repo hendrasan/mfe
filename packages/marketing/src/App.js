@@ -8,6 +8,7 @@ import Pricing from "./components/Pricing";
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "ma",
+  seed: "marketing",
 });
 
 export default ({ history }) => {

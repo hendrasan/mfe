@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -81,16 +82,28 @@ export default function Header({ isSignedIn, onSignOut }) {
           >
             App
           </Typography>
-          <Button
-            color="primary"
-            variant="outlined"
-            className={classes.link}
-            component={RouterLink}
-            to={isSignedIn ? "/" : "/auth/signin"}
-            onClick={onClick}
-          >
-            {isSignedIn ? "Logout" : "Login"}
-          </Button>
+          <Box>
+            {isSignedIn && (
+              <Button
+                color="primary"
+                className={classes.link}
+                component={RouterLink}
+                to={"/dashboard"}
+              >
+                Dashboard
+              </Button>
+            )}
+            <Button
+              color="primary"
+              variant="outlined"
+              className={classes.link}
+              component={RouterLink}
+              to={isSignedIn ? "/" : "/auth/signin"}
+              onClick={onClick}
+            >
+              {isSignedIn ? "Logout" : "Login"}
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
     </React.Fragment>
